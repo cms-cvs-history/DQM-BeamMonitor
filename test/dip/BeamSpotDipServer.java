@@ -95,8 +95,7 @@ implements Runnable,DipPublicationErrorHandler
       System.out.println("Making publication " + subjectLHC);
       publicationLHC = dip.createDipPublication(subjectLHC, this);
       messageLHC = dip.createDipData();
-      trueRcd(); // Starts with all 0.
-      publishRcd("UNINITIALIZED","",true,false);
+
       keepRunning = true;
     }
     catch ( DipException e )
@@ -209,8 +208,6 @@ implements Runnable,DipPublicationErrorHandler
 	String warnMsg = "No new data for " + idleTime + "seconds: ";
 	warnMsg += tkStatus();
 	publishRcd("Bad",warnMsg,false,false);
-	if (alive.get(6))
-	    alive.flip(6);
     }
   }
 
@@ -462,17 +459,13 @@ implements Runnable,DipPublicationErrorHandler
      }
 
      if (qlty_ == qualities[0]) {
-	 if (pubCMS_) publicationCMS.setQualityUncertain(err_);
-	 publicationLHC.setQualityUncertain(err_);
-     }
-     else if (qlty_ == qualities[1]) {
-	 if (pubCMS_) publicationCMS.setQualityBad(err_);
-	 publicationLHC.setQualityBad(err_);
-     }
-     else if (qlty_ == "UNINITIALIZED") {
- 	 if (pubCMS_) publicationCMS.setQualityBad("UNINITIALIZED");
-	 publicationLHC.setQualityBad("UNINITIALIZED");
-     }
+	  if (pubCMS_) publicationCMS.setQualityUncertain(err_);
+	  publicationLHC.setQualityUncertain(err_);
+      }
+      else if (qlty_ == qualities[1]) {
+	  if (pubCMS_) publicationCMS.setQualityBad(err_);
+	  publicationLHC.setQualityBad(err_);
+      }
    } catch (DipException e){
        System.err.println("DipException [publishRcd]: " + getDateTime());
        System.err.println("Failed to send data because " + e.getMessage());
