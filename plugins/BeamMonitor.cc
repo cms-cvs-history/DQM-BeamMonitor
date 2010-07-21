@@ -2,8 +2,8 @@
  * \file BeamMonitor.cc
  * \author Geng-yuan Jeng/UC Riverside
  *         Francisco Yumiceva/FNAL
- * $Date: 2010/04/13 17:07:51 $
- * $Revision: 1.43 $
+ * $Date: 2010/04/15 15:29:22 $
+ * $Revision: 1.44 $
  *
  */
 
@@ -20,6 +20,8 @@
 #include "DataFormats/Common/interface/View.h"
 #include "RecoVertex/BeamSpotProducer/interface/BSFitter.h"
 #include "FWCore/Framework/interface/MakerMacros.h"
+#include "FWCore/Framework/interface/LuminosityBlock.h"
+#include "FWCore/Framework/interface/Run.h"
 #include <numeric>
 #include <math.h>
 #include <TMath.h>
