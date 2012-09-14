@@ -13,7 +13,7 @@
 //
 // Original Author:  Mauro Dinardo,28 S-020,+41227673777,
 //         Created:  Tue Feb 23 13:15:31 CET 2010
-// $Id: Vx3DHLTAnalyzer.cc,v 1.101 2011/08/03 12:48:47 dinardo Exp $
+// $Id: Vx3DHLTAnalyzer.cc,v 1.102 2012/03/12 11:52:31 dinardo Exp $
 
 
 #include "DQM/BeamMonitor/plugins/Vx3DHLTAnalyzer.h"
@@ -863,14 +863,14 @@ void Vx3DHLTAnalyzer::endLuminosityBlock(const LuminosityBlock& lumiBlock,
 	      vals.push_back(std::sqrt(std::fabs(fitResults[0])));
 	      vals.push_back(std::sqrt(std::fabs(fitResults[1])));
 
-	      vals.push_back(powf(fitResults[6+nParams],2.));
-	      vals.push_back(powf(fitResults[7+nParams],2.));
-	      vals.push_back(powf(fitResults[8+nParams],2.));
-	      vals.push_back(powf(std::fabs(fitResults[2+nParams]) / (2.*std::sqrt(std::fabs(fitResults[2]))),2.));
-	      vals.push_back(powf(fitResults[5+nParams],2.));
-	      vals.push_back(powf(fitResults[4+nParams],2.));
-	      vals.push_back(powf(std::fabs(fitResults[0+nParams]) / (2.*std::sqrt(std::fabs(fitResults[0]))),2.));
-	      vals.push_back(powf(std::fabs(fitResults[1+nParams]) / (2.*std::sqrt(std::fabs(fitResults[1]))),2.));
+	      vals.push_back(std::pow(fitResults[6+nParams],2.));
+	      vals.push_back(std::pow(fitResults[7+nParams],2.));
+	      vals.push_back(std::pow(fitResults[8+nParams],2.));
+	      vals.push_back(std::pow(std::fabs(fitResults[2+nParams]) / (2.*std::sqrt(std::fabs(fitResults[2]))),2.));
+	      vals.push_back(std::pow(fitResults[5+nParams],2.));
+	      vals.push_back(std::pow(fitResults[4+nParams],2.));
+	      vals.push_back(std::pow(std::fabs(fitResults[0+nParams]) / (2.*std::sqrt(std::fabs(fitResults[0]))),2.));
+	      vals.push_back(std::pow(std::fabs(fitResults[1+nParams]) / (2.*std::sqrt(std::fabs(fitResults[1]))),2.));
 	    }
 	  else for (unsigned int i = 0; i < 8*2; i++) vals.push_back(0.0);
 
@@ -893,14 +893,14 @@ void Vx3DHLTAnalyzer::endLuminosityBlock(const LuminosityBlock& lumiBlock,
 	    vals.push_back(Vx_X->getTH1F()->GetRMS());
 	    vals.push_back(Vx_Y->getTH1F()->GetRMS());
 	    
-	    vals.push_back(powf(Vx_X->getTH1F()->GetMeanError(),2.));
-	    vals.push_back(powf(Vx_Y->getTH1F()->GetMeanError(),2.));
-	    vals.push_back(powf(Vx_Z->getTH1F()->GetMeanError(),2.));
-	    vals.push_back(powf(Vx_Z->getTH1F()->GetRMSError(),2.));
+	    vals.push_back(std::pow(Vx_X->getTH1F()->GetMeanError(),2.));
+	    vals.push_back(std::pow(Vx_Y->getTH1F()->GetMeanError(),2.));
+	    vals.push_back(std::pow(Vx_Z->getTH1F()->GetMeanError(),2.));
+	    vals.push_back(std::pow(Vx_Z->getTH1F()->GetRMSError(),2.));
 	    vals.push_back(0.0);
 	    vals.push_back(0.0);
-	    vals.push_back(powf(Vx_X->getTH1F()->GetRMSError(),2.));
-	    vals.push_back(powf(Vx_Y->getTH1F()->GetRMSError(),2.));
+	    vals.push_back(std::pow(Vx_X->getTH1F()->GetRMSError(),2.));
+	    vals.push_back(std::pow(Vx_Y->getTH1F()->GetRMSError(),2.));
 	    }
 	  else
 	    {
